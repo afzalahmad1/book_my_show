@@ -1,21 +1,21 @@
 package com.example.bookMyShow.Model;
 
 import com.example.bookMyShow.enums.SeatType;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "theater_seat")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class TheaterSeatEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(unique = true,columnDefinition = "seat_no",nullable = false)
     private String seatNo;
 
     @Enumerated(value = EnumType.STRING)
@@ -27,5 +27,9 @@ public class TheaterSeatEntity {
     @JoinColumn
     private TheaterEntity theater;
 
-
+    public TheaterSeatEntity(String seatNo, SeatType seatType, int rate) {
+        this.seatNo = seatNo;
+        this.seatType = seatType;
+        this.rate = rate;
+    }
 }

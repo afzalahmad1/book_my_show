@@ -1,5 +1,7 @@
 package com.example.bookMyShow.Model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -13,6 +15,8 @@ import java.util.List;
 @Table(name = "users")
 @Data
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

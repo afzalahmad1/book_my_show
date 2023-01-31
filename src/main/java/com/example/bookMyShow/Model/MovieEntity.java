@@ -1,5 +1,7 @@
 package com.example.bookMyShow.Model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +13,8 @@ import java.util.List;
 @Table(name = "movies")
 @Data
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class MovieEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
