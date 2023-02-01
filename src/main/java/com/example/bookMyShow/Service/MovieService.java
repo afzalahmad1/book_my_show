@@ -14,8 +14,8 @@ public class MovieService {
     MovieRepository movieRepository;
 
     public String addMovie(@RequestBody MovieRequestDto movieRequestDto){
-        MovieEntity movieEntity = MovieEntity.builder().movieName(movieRequestDto.getMoviename())
-                .releaseDate(movieRequestDto.getReleaseDate()).build();
+        MovieEntity movieEntity = MovieEntity.builder().movieName(movieRequestDto.getMovieName())
+                .releaseDate(movieRequestDto.getReleaseDate()).duration(150).build();
 
         movieRepository.save(movieEntity);
 

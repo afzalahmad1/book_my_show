@@ -1,6 +1,8 @@
 package com.example.bookMyShow.Model;
 
 import com.example.bookMyShow.enums.SeatType;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,6 +13,8 @@ import java.util.Date;
 @Data
 @Table(name = "show_seat")
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class ShowSeatEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

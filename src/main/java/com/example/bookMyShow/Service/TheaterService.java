@@ -29,10 +29,10 @@ public class TheaterService {
         List<TheaterSeatEntity> theaterSeats = createTheaterSeats();
 
         //set the seats list in the theaterEntity
-        theater.setTheaterSeatEntityList(theaterSeats);
+        theater.setTheaterSeatEntityList(theaterSeats); //(optional)(parent)
 
-        //for each theater Seat we need to theaterEntity
-        for(TheaterSeatEntity theaterSeat : theaterSeats){
+        //for each theater Seat we need to theaterEntity(foriegn key column)
+        for(TheaterSeatEntity theaterSeat : theaterSeats){ //(important)(child)
             theaterSeat.setTheater(theater);
         }
         theaterRepository.save(theater);
@@ -40,28 +40,44 @@ public class TheaterService {
     }
     public List<TheaterSeatEntity> createTheaterSeats(){
         List<TheaterSeatEntity> seats = new ArrayList<>();
-        TheaterSeatEntity theaterSeatEntity1 = new TheaterSeatEntity("1A", SeatType.CLASSIC,100);
-        TheaterSeatEntity theaterSeatEntity2 = new TheaterSeatEntity("1B", SeatType.CLASSIC,100);
-        TheaterSeatEntity theaterSeatEntity3 = new TheaterSeatEntity("1C", SeatType.CLASSIC,100);
-        TheaterSeatEntity theaterSeatEntity4 = new TheaterSeatEntity("1D", SeatType.CLASSIC,100);
-        TheaterSeatEntity theaterSeatEntity5 = new TheaterSeatEntity("1E", SeatType.CLASSIC,100);
+//        TheaterSeatEntity theaterSeatEntity1 = new TheaterSeatEntity("1A", SeatType.CLASSIC,100);
+//        TheaterSeatEntity theaterSeatEntity2 = new TheaterSeatEntity("1B", SeatType.CLASSIC,100);
+//        TheaterSeatEntity theaterSeatEntity3 = new TheaterSeatEntity("1C", SeatType.CLASSIC,100);
+//        TheaterSeatEntity theaterSeatEntity4 = new TheaterSeatEntity("1D", SeatType.CLASSIC,100);
+//        TheaterSeatEntity theaterSeatEntity5 = new TheaterSeatEntity("1E", SeatType.CLASSIC,100);
+//
 
-        TheaterSeatEntity theaterSeatEntity6 = new TheaterSeatEntity("2A", SeatType.PLATINUM,200);
-        TheaterSeatEntity theaterSeatEntity7 = new TheaterSeatEntity("2B", SeatType.PLATINUM,200);
-        TheaterSeatEntity theaterSeatEntity8 = new TheaterSeatEntity("2C", SeatType.PLATINUM,200);
-        TheaterSeatEntity theaterSeatEntity9 = new TheaterSeatEntity("2D", SeatType.PLATINUM,200);
-        TheaterSeatEntity theaterSeatEntity10 = new TheaterSeatEntity("2E", SeatType.PLATINUM,200);
+        //Optimising by loop
+        for(int i=0;i<5;i++){
+            char ch = (char)('A'+i);
+            String seatNo = "1"+ch;
+            TheaterSeatEntity theaterSeat = new TheaterSeatEntity(seatNo,SeatType.CLASSIC,100);
+            seats.add(theaterSeat);
+        }
 
-        seats.add(theaterSeatEntity1);
-        seats.add(theaterSeatEntity2);
-        seats.add(theaterSeatEntity3);
-        seats.add(theaterSeatEntity4);
-        seats.add(theaterSeatEntity5);
-        seats.add(theaterSeatEntity6);
-        seats.add(theaterSeatEntity7);
-        seats.add(theaterSeatEntity8);
-        seats.add(theaterSeatEntity9);
-        seats.add(theaterSeatEntity10);
+//        TheaterSeatEntity theaterSeatEntity6 = new TheaterSeatEntity("2A", SeatType.PLATINUM,200);
+//        TheaterSeatEntity theaterSeatEntity7 = new TheaterSeatEntity("2B", SeatType.PLATINUM,200);
+//        TheaterSeatEntity theaterSeatEntity8 = new TheaterSeatEntity("2C", SeatType.PLATINUM,200);
+//        TheaterSeatEntity theaterSeatEntity9 = new TheaterSeatEntity("2D", SeatType.PLATINUM,200);
+//        TheaterSeatEntity theaterSeatEntity10 = new TheaterSeatEntity("2E", SeatType.PLATINUM,200);
+
+        for(int i=0;i<5;i++){
+            char ch = (char)('A'+i);
+            String seatNo = "2"+ch;
+            TheaterSeatEntity theaterSeat = new TheaterSeatEntity(seatNo,SeatType.PLATINUM,200);
+            seats.add(theaterSeat);
+        }
+
+//        seats.add(theaterSeatEntity1);
+//        seats.add(theaterSeatEntity2);
+//        seats.add(theaterSeatEntity3);
+//        seats.add(theaterSeatEntity4);
+//        seats.add(theaterSeatEntity5);
+//        seats.add(theaterSeatEntity6);
+//        seats.add(theaterSeatEntity7);
+//        seats.add(theaterSeatEntity8);
+//        seats.add(theaterSeatEntity9);
+//        seats.add(theaterSeatEntity10);
 
         theaterSeatRepository.saveAll(seats);
 

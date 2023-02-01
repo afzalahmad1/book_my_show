@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Data
 public class MovieRequestDto {
-    private String Moviename;
+    private String movieName;
 
     private Date releaseDate;
 }
